@@ -4,7 +4,7 @@ about = {}
 with open("mq_gen/__about__.py") as fp:
     exec(fp.read(), about)
 
-with open("README.md", "r") as fp:
+with open("README.md") as fp:
     long_description = fp.read()
 
 setup(name='mq-generator',

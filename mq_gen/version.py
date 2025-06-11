@@ -9,4 +9,4 @@ class MqGenAbout:
         self.summary = __summary__
 
     def __str__(self):
-        return "%s %s version %s" % (__title__, __summary__, __version__)
+        return f"{__title__} {__summary__} version {__version__}"
