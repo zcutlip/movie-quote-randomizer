@@ -11,7 +11,7 @@ def register_quote_type(quote_class):
 
 
 @register_quote_type
-class MGQuoteSingle(dict):
+class MQuoteSingle(dict):
     QUOTE_TYPE = "single"
 
     def __init__(self, quote_dict: dict):
@@ -35,7 +35,7 @@ class MGQuoteSingle(dict):
 
 
 @register_quote_type
-class MGQuoteDialogue(MGQuoteSingle):
+class MQuoteDialogue(MQuoteSingle):
     QUOTE_TYPE = "dialogue"
 
     def __init__(self, quote_dict: dict):
