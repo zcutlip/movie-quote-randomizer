@@ -1,10 +1,10 @@
 {
   "meta": {
     "version": 1,
-    "name": "Hackers",
+    "media_title": "Hackers",
+    "media_type": "movie",
     "description": "Quotes from the movie Hackers"
   },
-  "media_type": "movie",
   "quotes":[
     {
       "quote_type": "single",
