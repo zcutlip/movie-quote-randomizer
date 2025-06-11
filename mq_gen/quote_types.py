@@ -32,6 +32,18 @@ class MQuoteSingle(dict):
         line = {self._character(): self._line()}
         return [line]
 
+    @property
+    def media_title(self) -> str:
+        return self["media_title"]
+
+    @property
+    def media_type(self) -> str:
+        return self["media_type"]
+
+    @property
+    def year(self) -> int:
+        return self["year"]
+
     def _line(self) -> str:
         return self["line"]
 
