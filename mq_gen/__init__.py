@@ -6,3 +6,5 @@ except ImportError:  # pragma: no coverage
     pass
 
 from .__about__ import __summary__, __title__, __version__
+# this causes the quote class decorators to fire and register them
+from .quote_types import MGQuoteDialogue, MGQuoteSingle
