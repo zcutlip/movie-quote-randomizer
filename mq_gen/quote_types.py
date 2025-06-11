@@ -14,11 +14,14 @@ def register_quote_type(quote_class):
 class MQuoteSingle(dict):
     QUOTE_TYPE = "single"
 
-    def __init__(self, quote_dict: dict):
+    def __init__(self, quote_dict: dict, media_title: str, media_type: str, year: int):
         super().__init__()
         if quote_dict["quote_type"] != self.QUOTE_TYPE:
             raise ValueError(f"Invalid quote type: {quote_dict["quote_type"]}")
         self.update(quote_dict)
+        self["media_title"] = media_title
+        self["media_type"] = media_type
+        self["year"] = year
 
     def characters(self) -> list[str]:
         return self["characters"]
@@ -37,9 +40,6 @@ class MQuoteSingle(dict):
 @register_quote_type
 class MQuoteDialogue(MQuoteSingle):
     QUOTE_TYPE = "dialogue"
-
-    def __init__(self, quote_dict: dict):
-        super().__init__(quote_dict)
 
     def lines(self) -> list[dict[str, str]]:
         lines = self["lines"]
