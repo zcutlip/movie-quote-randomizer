@@ -23,9 +23,11 @@ class MQuoteSingle(dict):
         self["media_type"] = media_type
         self["year"] = year
 
+    @property
     def characters(self) -> list[str]:
         return self["characters"]
 
+    @property
     def lines(self) -> list[dict[str, str]]:
         line = {self._character(): self._line()}
         return [line]
@@ -34,13 +36,14 @@ class MQuoteSingle(dict):
         return self["line"]
 
     def _character(self) -> str:
-        return self.characters()[0]
+        return self.characters[0]
 
 
 @register_quote_type
 class MQuoteDialogue(MQuoteSingle):
     QUOTE_TYPE = "dialogue"
 
+    @property
     def lines(self) -> list[dict[str, str]]:
         lines = self["lines"]
         return lines
