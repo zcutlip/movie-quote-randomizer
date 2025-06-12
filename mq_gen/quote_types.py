@@ -1,18 +1,4 @@
-mgquote_type_registry = {}
-
-
-def register_quote_type(quote_class):
-    """
-    Decorator to register quote classes
-    """
-    quote_type = quote_class.QUOTE_TYPE
-    mgquote_type_registry[quote_type] = quote_class
-    return quote_class
-
-
-@register_quote_type
-class MQuoteSingle(dict):
-    QUOTE_TYPE = "single"
+class MQuote(dict):
 
     def __init__(self, quote_dict: dict, media_title: str, media_type: str, year: int):
         super().__init__()
@@ -29,8 +15,8 @@ class MQuoteSingle(dict):
 
     @property
     def lines(self) -> list[dict[str, str]]:
-        line = {self._character(): self._line()}
-        return [line]
+        lines = self["lines"]
+        return lines
 
     @property
     def media_title(self) -> str:
@@ -43,19 +29,3 @@ class MQuoteSingle(dict):
     @property
     def year(self) -> int:
         return self["year"]
-
-    def _line(self) -> str:
-        return self["line"]
-
-    def _character(self) -> str:
-        return self.characters[0]
-
-
-@register_quote_type
-class MQuoteDialogue(MQuoteSingle):
-    QUOTE_TYPE = "dialogue"
-
-    @property
-    def lines(self) -> list[dict[str, str]]:
-        lines = self["lines"]
-        return lines
