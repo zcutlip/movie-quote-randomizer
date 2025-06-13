@@ -27,3 +27,9 @@ class MQuote(dict):
     @property
     def year(self) -> int:
         return self["year"]
+
+    def __str__(self):
+        lines = [
+            f"{list(q.keys())[0]}: {list(q.values())[0]}" for q in self.lines]
+        _str = "\n".join(lines)
+        return _str
