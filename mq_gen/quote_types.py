@@ -2,8 +2,6 @@ class MQuote(dict):
 
     def __init__(self, quote_dict: dict, media_title: str, media_type: str, year: int):
         super().__init__()
-        if quote_dict["quote_type"] != self.QUOTE_TYPE:
-            raise ValueError(f"Invalid quote type: {quote_dict["quote_type"]}")
         self.update(quote_dict)
         self["media_title"] = media_title
         self["media_type"] = media_type
