@@ -1,7 +1,7 @@
 from . import __summary__, __title__, __version__
 
 
-class MqGenAbout:
+class MQRAbout:
 
     def __init__(self):
         self.version = __version__
