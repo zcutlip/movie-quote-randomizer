@@ -6,3 +6,4 @@ except ImportError:  # pragma: no coverage
     pass
 
 from .__about__ import __summary__, __title__, __version__
+from .randomizer import MQRandomizer
