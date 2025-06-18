@@ -1,4 +1,4 @@
-__title__ = "Movie Quote Generator"
+__title__ = "movie-quote-randomizer"
 __version__ = "0.1.0.dev0"
 __summary__ = "Coming soon"
 
