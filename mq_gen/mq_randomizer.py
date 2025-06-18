@@ -8,7 +8,7 @@ from .pkg_resources import data_location_as_path
 from .quote_types import MQuote
 
 
-class MQGenerator:
+class MQRandomizer:
 
     def __init__(self, quote_data: str | Path | dict = None):
         if quote_data is None:
