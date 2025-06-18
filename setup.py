@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 about = {}
-with open("mq_gen/__about__.py") as fp:
+with open("mq_randomizer/__about__.py") as fp:
     exec(fp.read(), about)
 
 with open("README.md") as fp:
