@@ -117,3 +117,50 @@ def main():
 
   print(str(quote))
 ```
+
+## Unattributed Quotes
+
+In some cases the quotes aren't associated with a particular character or even the narrator. Take this from the opening sequence of the video game Zero Wing (1989):
+
+> In A.D. 2101
+>
+> War was beginning.
+
+In this case the "character" should be the special value `"__none__"` which will tell the `MQuote` object to not render the character's name.
+
+Here's some JSON:
+
+```json
+{
+  "meta": {
+    "version": 1,
+    "media_title": "Zero Wing",
+    "media_type": "Video Game",
+    "year": 1989,
+    "description": "Quotes from the video game Zero Wing, noted for poorly translated subtitles that spawned an internet meme."
+  },
+  "quotes": [
+    {
+      "quote_type": "dialogue",
+      "characters": [
+        "__none__"
+      ],
+      "lines": [
+        { "__none__": "In A.D. 2101" },
+        { "__none__": "War was beginning."}
+      ]
+    },
+  ]
+}
+
+```
+
+```ipython
+In [19]: str(q)
+Out[19]: 'In A.D. 2101\nWar was beginning.'
+
+In [20]: print(str(q))
+In A.D. 2101
+War was beginning.
+```
+
