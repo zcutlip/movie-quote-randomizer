@@ -18,6 +18,16 @@ Personally, I like the idea of adding an easter egg that, when activated, prints
 
 Look, how you use this isn't really my problem. That sounds more like a *you* problem. I've already done the hard work for you.
 
+## Installation
+
+You can install this package from PyPI via `pip`:
+
+```console
+pip install movie-quote-randomizer
+```
+
+However, as it's a library that's intended for use from another project, you'll probably want to add `movie-quote-randomizer` to your project's `install_requires`.
+
 ## Usage
 
 Simply import `MQRandomizer` from `mq_randomizer`, and instantiate it. If you have your own JSON quote database, use that. Otherwise you'll get quotes from the 1995 Film, Hackers.
