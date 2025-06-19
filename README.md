@@ -36,7 +36,7 @@ The randomizer object returns `MQuote` objects.
 
 You can work with `MQuote` objects in three ways:
 
-**They're a proper python dictionary that looks like:**
+**They are proper Python dictionaries that look like:**
 ```python
 {
   'quote_type': 'single',
@@ -48,7 +48,7 @@ You can work with `MQuote` objects in three ways:
 }
 ```
 
-**They're a python object with several useful properties defined**:
+**They're Python objects with several useful properties defined**:
 - `characters: list[str]`
 - `lines: list[dict[str, str]]`
 - `media_title: str`
