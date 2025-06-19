@@ -1,4 +1,5 @@
 class MQuote(dict):
+    UNATTRIBUTED = "__none__"
 
     def __init__(self, quote_dict: dict, media_title: str, media_type: str, year: int):
         super().__init__()
@@ -29,7 +30,13 @@ class MQuote(dict):
         return self["year"]
 
     def __str__(self):
-        lines = [
-            f"{list(q.keys())[0]}: {list(q.values())[0]}" for q in self.lines]
+        lines = []
+        for quote_dict in self.lines:
+            for k, v in quote_dict.items():
+                if k != self.UNATTRIBUTED:
+                    line = f"{k}: {v}"
+                else:
+                    line = f"{v}"
+                lines.append(line)
         _str = "\n".join(lines)
         return _str
