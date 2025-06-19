@@ -19,7 +19,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Zachary Cutlip",
     author_email="uid000@gmail.com",
-    url="TBD",
+    url="https://github.com/zcutlip/movie-quote-randomizer",
     license="MIT",
     packages=find_packages(),
     package_data={'mq_randomizer': ['py.typed'],
