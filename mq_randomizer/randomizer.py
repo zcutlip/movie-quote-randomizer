@@ -25,9 +25,9 @@ class MQRandomizer:
         self._description = quote_data["meta"]["description"]
         self._quotes: list[MQuote] = []
         quote_dicts = quote_data["quotes"]
-        self._quotes = self.populate_quotes(quote_dicts)
+        self._quotes = self._populate_quotes(quote_dicts)
 
-    def populate_quotes(self, quote_dicts: list[dict[str, Any]]) -> list[MQuote]:
+    def _populate_quotes(self, quote_dicts: list[dict[str, Any]]) -> list[MQuote]:
         quotes = []
         for quote_dict in quote_dicts:
             quote_obj = MQuote(quote_dict, self._media_title,
