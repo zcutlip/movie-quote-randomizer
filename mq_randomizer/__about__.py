@@ -1,5 +1,5 @@
 __title__ = "movie-quote-randomizer"
-__version__ = "0.1.0b1"
+__version__ = "0.1.0b2"
 __summary__ = "A Python API to randomly select quotes from your favorite movie, TV show, video game, or whatever medium suits your fancy."
 
 """
