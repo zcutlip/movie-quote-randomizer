@@ -9,6 +9,15 @@ from .quote_types import MQuote
 
 
 class MQRandomizer:
+    """
+    A random quote generator for movie, TV show, or video game quotes.
+
+    Parameters
+    ----------
+    quote_data_src : str | Path | dict[str, Any], optional
+        The source of quote data. Can be a file path, directory path, or pre-loaded dictionary.
+        If None, defaults to the package's default quotes.
+    """
 
     def __init__(self, quote_data_src: str | Path | dict[str, Any] = None):
 
@@ -36,6 +45,14 @@ class MQRandomizer:
         return quotes
 
     def random_quote(self):
+        """
+        Randomly select and return a quote from the collection.
+
+        Returns
+        -------
+        MQuote
+            A randomly selected quote object.
+        """
         idx = secrets.choice(range(0, len(self._quotes)))
         quote = self._quotes[idx]
         return quote

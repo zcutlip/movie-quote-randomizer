@@ -6,8 +6,19 @@ from types import ModuleType
 
 def data_location_as_path(package: ModuleType, sub_path) -> Path:
     """
-    Convenience function to get a Path object from a package and a subpath
-    within the package
+    Convert a package and subpath to a Path object.
+
+    Parameters
+    ----------
+    package : ModuleType
+        The package containing the data.
+    sub_path : str
+        The subpath within the package.
+
+    Returns
+    -------
+    Path
+        A Path object representing the location of the subpath within the package.
     """
     # joinpath() returns a Traversable
     # to turn it into Path we first turn it into a string
