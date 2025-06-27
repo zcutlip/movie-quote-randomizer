@@ -1,9 +1,10 @@
 # importlib.resources.files introduced in python 3.9
 from importlib.resources import files as pkgfiles  # noqa: F401
 from pathlib import Path
+from types import ModuleType
 
 
-def data_location_as_path(package, sub_path) -> Path:
+def data_location_as_path(package: ModuleType, sub_path) -> Path:
     """
     Convenience function to get a Path object from a package and a subpath
     within the package
