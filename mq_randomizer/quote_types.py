@@ -5,6 +5,14 @@ class MQuoteLine:
         self._character = character
         self._line = line
 
+    @property
+    def line(self) -> str:
+        return self._line
+
+    @property
+    def character(self) -> str:
+        return self._character
+
     def is_unattributed(self) -> bool:
         return self._character == self.UNATTRIBUTED
 
@@ -20,9 +28,9 @@ class MQuoteLine:
 
     def __str__(self):
         if self.is_unattributed():
-            _str = self._line
+            _str = self.line
         else:
-            _str = f"{self._character}: {self._line}"
+            _str = f"{self.character}: {self.line}"
         return _str
 
 
