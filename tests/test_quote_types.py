@@ -1,6 +1,6 @@
 import pytest
 
-from mq_randomizer.quote_types import MQuote
+from mq_randomizer.quote_types import MQuote, MQuoteLine
 
 
 class TestMQuote:
@@ -17,15 +17,15 @@ class TestMQuote:
         assert sample_quote["media_type"] == "movie"
         assert sample_quote["year"] == 1999
         assert sample_quote["characters"] == ["Neo"]
-        assert sample_quote["lines"] == [
-            {"Neo": "Remember... there is no spoon."}]
+        sample_quote_line = MQuoteLine("Neo", "Remember... there is no spoon.")
+        assert sample_quote["lines"] == [sample_quote_line]
 
     def test_characters_property(self, sample_quote):
         assert sample_quote.characters == ["Neo"]
 
     def test_lines_property(self, sample_quote):
-        assert sample_quote.lines == [
-            {"Neo": "Remember... there is no spoon."}]
+        sample_quote_line = MQuoteLine("Neo", "Remember... there is no spoon.")
+        assert sample_quote.lines == [sample_quote_line]
 
     def test_str_representation(self, sample_quote):
         expected = "Neo: Remember... there is no spoon."
