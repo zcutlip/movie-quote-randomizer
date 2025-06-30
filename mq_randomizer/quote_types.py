@@ -31,6 +31,7 @@ class MQuote(dict):
 
     def __init__(self, quote_dict: dict, media_title: str, media_type: str, year: int):
         super().__init__()
+        quote_dict = self._convert_quote_lines(quote_dict)
         self.update(quote_dict)
         self["media_title"] = media_title
         self["media_type"] = media_type
@@ -49,7 +50,7 @@ class MQuote(dict):
         return self["characters"]
 
     @property
-    def lines(self) -> list[dict[str, str]]:
+    def lines(self) -> list[MQuoteLine]:
         """
         Get the list of lines in the quote.
 
@@ -97,6 +98,17 @@ class MQuote(dict):
         """
         return self["year"]
 
+    def _convert_quote_lines(self, quote_dict):
+        lines = quote_dict["lines"]
+        converted_lines = []
+        for line_dict in lines:
+            character = list(line_dict.keys())[0]
+            line_text = line_dict[character]
+            mq_line = MQuoteLine(character, line_text)
+            converted_lines.append(mq_line)
+        quote_dict["lines"] = converted_lines
+        return quote_dict
+
     def __str__(self):
         """
         Generate a string representation of the quote.
@@ -107,12 +119,8 @@ class MQuote(dict):
             A formatted string containing the quote's lines and characters.
         """
         lines = []
-        for quote_dict in self.lines:
-            for k, v in quote_dict.items():
-                if k != self.UNATTRIBUTED:
-                    line = f"{k}: {v}"
-                else:
-                    line = f"{v}"
-                lines.append(line)
+        for line_obj in self.lines:
+            line = str(line_obj)
+            lines.append(line)
         _str = "\n".join(lines)
         return _str
