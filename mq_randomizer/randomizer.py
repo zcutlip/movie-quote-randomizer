@@ -44,6 +44,10 @@ class MQRandomizer:
             quotes.append(quote_obj)
         return quotes
 
+    def quote_at_index(self, index: int):
+        quote = self._quotes[index]
+        return quote
+
     def random_quote(self):
         """
         Randomly select and return a quote from the collection.
@@ -54,5 +58,4 @@ class MQRandomizer:
             A randomly selected quote object.
         """
         idx = secrets.choice(range(0, len(self._quotes)))
-        quote = self._quotes[idx]
-        return quote
+        return self.quote_at_index(idx)
