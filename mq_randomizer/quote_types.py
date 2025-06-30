@@ -1,3 +1,31 @@
+class MQuoteLine:
+    UNATTRIBUTED = "__none__"
+
+    def __init__(self, character: str, line: str):
+        self._character = character
+        self._line = line
+
+    def is_unattributed(self) -> bool:
+        return self._character == self.UNATTRIBUTED
+
+    def __eq__(self, other):
+        eq = False
+        if id(other) == id(self):
+            eq = True
+        elif isinstance(other, MQuoteLine):
+            if other._character == self._character:
+                if other._line == self._line:
+                    eq = True
+        return eq
+
+    def __str__(self):
+        if self.is_unattributed():
+            _str = self._line
+        else:
+            _str = f"{self._character}: {self._line}"
+        return _str
+
+
 class MQuote(dict):
     UNATTRIBUTED = "__none__"
 
