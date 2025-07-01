@@ -22,11 +22,17 @@ class MQRandomizer:
     def __init__(self, quote_data_src: str | Path | dict[str, Any] = None):
 
         if quote_data_src is None:
+            # if we wern't given a quote data object,
+            # use the default
             quote_data_src = data_location_as_path(
                 data, data.DEFAULT_QUOTES_JSON)
         if not isinstance(quote_data_src, dict):
+            # quote_data_src, either default or caller-provided
+            # is not a dict and should represent a path to the data
             quote_data = json.load(open(quote_data_src))
         else:
+            # quote_data_src is a dict, and doesn't need to be
+            # loaded from disk via json
             quote_data = quote_data_src
         self._media_title = quote_data["meta"]["media_title"]
         self._media_type = quote_data["meta"]["media_type"]
