@@ -32,46 +32,46 @@ class TestMQRandomizer:
         }
 
     @pytest.fixture
-    def randomizer(self, mock_data):
+    def randomizer_default_data(self, mock_data):
         with mock.patch.object(data, 'DEFAULT_QUOTES_JSON', 'test_quotes.json'):
             # Fixed patch
             with mock.patch.object(pkg_resources, 'data_location_as_path', return_value='mock/path'):
                 with mock.patch('builtins.open', mock.mock_open(read_data=json.dumps(mock_data))):
                     return MQRandomizer()
 
-    def test_initialization(self, randomizer):
-        assert randomizer._media_title == "Test Movie"
-        assert randomizer._media_type == "movie"
-        assert randomizer._year == 2023
-        assert len(randomizer._quotes) == 2
-        assert isinstance(randomizer._quotes[0], MQuote)
+    def test_initialization_010(self, randomizer_default_data):
+        assert randomizer_default_data._media_title == "Test Movie"
+        assert randomizer_default_data._media_type == "movie"
+        assert randomizer_default_data._year == 2023
+        assert len(randomizer_default_data._quotes) == 2
+        assert isinstance(randomizer_default_data._quotes[0], MQuote)
 
-    def test_populate_quotes(self, randomizer, mock_data):
-        quotes = randomizer._populate_quotes(mock_data["quotes"])
+    def test_populate_quotes(self, randomizer_default_data, mock_data):
+        quotes = randomizer_default_data._populate_quotes(mock_data["quotes"])
         assert len(quotes) == 2
         assert all(isinstance(q, MQuote) for q in quotes)
 
-    def test_random_quote(self, randomizer):
-        quote = randomizer.random_quote()
+    def test_random_quote(self, randomizer_default_data):
+        quote = randomizer_default_data.random_quote()
         assert isinstance(quote, MQuote)
-        assert len(randomizer._quotes) > 0
+        assert len(randomizer_default_data._quotes) > 0
 
-    def test_quote_at_index_010(self, randomizer):
-        quote = randomizer.quote_at_index(0)
+    def test_quote_at_index_010(self, randomizer_default_data):
+        quote = randomizer_default_data.quote_at_index(0)
         assert isinstance(quote, MQuote)
-        assert len(randomizer._quotes) > 0
+        assert len(randomizer_default_data._quotes) > 0
 
-    def test_quote_at_index_020(self, randomizer):
-        quote = randomizer.quote_at_index(1)
+    def test_quote_at_index_020(self, randomizer_default_data):
+        quote = randomizer_default_data.quote_at_index(1)
         assert isinstance(quote, MQuote)
-        assert len(randomizer._quotes) > 0
+        assert len(randomizer_default_data._quotes) > 0
 
-    def test_quote_at_index_030(self, randomizer):
-        assert len(randomizer._quotes) > 0
+    def test_quote_at_index_030(self, randomizer_default_data):
+        assert len(randomizer_default_data._quotes) > 0
         with pytest.raises(IndexError):
-            randomizer.quote_at_index(1000)
+            randomizer_default_data.quote_at_index(1000)
 
-    def test_random_quote_empty(self, randomizer):
-        randomizer._quotes = []
+    def test_random_quote_empty(self, randomizer_default_data):
+        randomizer_default_data._quotes = []
         with pytest.raises(IndexError):
-            randomizer.random_quote()
+            randomizer_default_data.random_quote()
