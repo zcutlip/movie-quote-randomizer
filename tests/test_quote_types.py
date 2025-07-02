@@ -33,6 +33,15 @@ class TestMQuote:
         sample_quote_line = MQuoteLine("Neo", self._neo_line)
         assert sample_quote.lines == [sample_quote_line]
 
+    def test_media_title_property(self, sample_quote: MQuote):
+        assert sample_quote.media_title == self._media_title
+
+    def test_media_type_property(self, sample_quote: MQuote):
+        assert sample_quote.media_type == self._media_type
+
+    def test_year_property(self, sample_quote: MQuote):
+        assert sample_quote.year == self._media_year
+
     def test_mquote_line_equality_010(self):
         """
         Test the __eq__() implementation
