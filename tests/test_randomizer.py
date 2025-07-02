@@ -1,4 +1,5 @@
 import json
+from tempfile import NamedTemporaryFile
 from unittest import mock
 
 import pytest
@@ -34,10 +35,23 @@ class TestMQRandomizer:
     @pytest.fixture
     def randomizer_default_data(self, mock_data):
         with mock.patch.object(data, 'DEFAULT_QUOTES_JSON', 'test_quotes.json'):
-            # Fixed patch
             with mock.patch.object(pkg_resources, 'data_location_as_path', return_value='mock/path'):
                 with mock.patch('builtins.open', mock.mock_open(read_data=json.dumps(mock_data))):
                     return MQRandomizer()
+
+    @pytest.fixture
+    def randomizer_with_path(self, mock_data):
+        # python 3.12 adds delete_on_close, which lets us close the file
+        # within the context, but still re-open it
+        # however, python <= 3.11 only has the delete kwarg which means
+        # the file gets deleted on close, or when the context is exited
+        # with NamedTemporaryFile(mode="w", delete_on_close=False) as f:
+        with NamedTemporaryFile(mode="w", delete=False) as f:
+            json.dump(mock_data, f)
+            # on some systems, you can open the file elsewhere even if it's already
+            # open here. But not on Windows. So we have to close the file
+            f.close()
+            return MQRandomizer(quote_data_src=f.name)
 
     def test_initialization_010(self, randomizer_default_data):
         assert randomizer_default_data._media_title == "Test Movie"
@@ -45,6 +59,13 @@ class TestMQRandomizer:
         assert randomizer_default_data._year == 2023
         assert len(randomizer_default_data._quotes) == 2
         assert isinstance(randomizer_default_data._quotes[0], MQuote)
+
+    def test_initialization_020(self, randomizer_with_path):
+        assert randomizer_with_path._media_title == "Test Movie"
+        assert randomizer_with_path._media_type == "movie"
+        assert randomizer_with_path._year == 2023
+        assert len(randomizer_with_path._quotes) == 2
+        assert isinstance(randomizer_with_path._quotes[0], MQuote)
 
     def test_populate_quotes(self, randomizer_default_data, mock_data):
         quotes = randomizer_default_data._populate_quotes(mock_data["quotes"])
