@@ -9,4 +9,5 @@ pytest
 setuptools
 twine
 -e .
+-r test-reqs.txt
 -r requirements.txt
