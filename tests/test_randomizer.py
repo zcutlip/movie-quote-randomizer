@@ -53,6 +53,10 @@ class TestMQRandomizer:
             f.close()
             return MQRandomizer(quote_data_src=f.name)
 
+    @pytest.fixture
+    def randomizer_with_dict(self, mock_data):
+        return MQRandomizer(quote_data_src=mock_data)
+
     def test_initialization_010(self, randomizer_default_data):
         assert randomizer_default_data._media_title == "Test Movie"
         assert randomizer_default_data._media_type == "movie"
@@ -66,6 +70,13 @@ class TestMQRandomizer:
         assert randomizer_with_path._year == 2023
         assert len(randomizer_with_path._quotes) == 2
         assert isinstance(randomizer_with_path._quotes[0], MQuote)
+
+    def test_initialization_030(self, randomizer_with_dict):
+        assert randomizer_with_dict._media_title == "Test Movie"
+        assert randomizer_with_dict._media_type == "movie"
+        assert randomizer_with_dict._year == 2023
+        assert len(randomizer_with_dict._quotes) == 2
+        assert isinstance(randomizer_with_dict._quotes[0], MQuote)
 
     def test_populate_quotes(self, randomizer_default_data, mock_data):
         quotes = randomizer_default_data._populate_quotes(mock_data["quotes"])
