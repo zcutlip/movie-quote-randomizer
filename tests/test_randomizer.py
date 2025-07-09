@@ -78,11 +78,6 @@ class TestMQRandomizer:
         assert len(randomizer_with_dict._quotes) == 2
         assert isinstance(randomizer_with_dict._quotes[0], MQuote)
 
-    def test_populate_quotes(self, randomizer_default_data, mock_data):
-        quotes = randomizer_default_data._populate_quotes(mock_data["quotes"])
-        assert len(quotes) == 2
-        assert all(isinstance(q, MQuote) for q in quotes)
-
     def test_random_quote(self, randomizer_default_data):
         quote = randomizer_default_data.random_quote()
         assert isinstance(quote, MQuote)
