@@ -1,3 +1,4 @@
+jsonschema
 mypy
 # pytest enables pytest-xdist to detect number of physical cores
 psutil
