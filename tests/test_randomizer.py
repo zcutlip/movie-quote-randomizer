@@ -4,8 +4,6 @@ from unittest import mock
 
 import pytest
 
-from mq_randomizer import pkg_resources  # Added import
-from mq_randomizer import data
 from mq_randomizer.quote_types import MQuote
 from mq_randomizer.randomizer import MQRandomizer
 
@@ -34,10 +32,8 @@ class TestMQRandomizer:
 
     @pytest.fixture
     def randomizer_default_data(self, mock_data):
-        with mock.patch.object(data, 'DEFAULT_QUOTES_JSON', 'test_quotes.json'):
-            with mock.patch.object(pkg_resources, 'data_location_as_path', return_value='mock/path'):
-                with mock.patch('builtins.open', mock.mock_open(read_data=json.dumps(mock_data))):
-                    return MQRandomizer()
+        with mock.patch.object(MQRandomizer, '_default_quote_data', return_value=mock_data):
+            return MQRandomizer()
 
     @pytest.fixture
     def randomizer_with_path(self, mock_data):
