@@ -78,6 +78,26 @@ class TestMQRandomizer:
         assert len(randomizer_with_dict._quotes) == 2
         assert isinstance(randomizer_with_dict._quotes[0], MQuote)
 
+    def test_validation_with_external_data(self, external_data):
+        randomizer = MQRandomizer(external_data)
+        assert randomizer._validated is True
+
+    def test_initialization_with_external_data(self, external_data):
+        randomizer = MQRandomizer(external_data)
+        assert len(randomizer._quotes) == 17
+
+    def test_random_quote_with_external_data(self, external_data):
+        randomizer = MQRandomizer(external_data)
+        quote = randomizer.random_quote()
+        assert isinstance(quote, MQuote)
+
+    def test_quote_at_index_with_external_data(self, external_data):
+        randomizer = MQRandomizer(external_data)
+        quote_str = "In A.D. 2101\nWar was beginning."
+        quote = randomizer.quote_at_index(0)
+        assert isinstance(quote, MQuote)
+        assert str(quote) == quote_str
+
     def test_random_quote(self, randomizer_default_data):
         quote = randomizer_default_data.random_quote()
         assert isinstance(quote, MQuote)
