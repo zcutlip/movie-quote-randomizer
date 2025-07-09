@@ -24,9 +24,8 @@ class MQRandomizer:
         if quote_data_src is None:
             # if we wern't given a quote data object,
             # use the default
-            quote_data_src = data_location_as_path(
-                data, data.DEFAULT_QUOTES_JSON)
-        if not isinstance(quote_data_src, dict):
+            quote_data = self._default_quote_data()
+        elif not isinstance(quote_data_src, dict):
             # quote_data_src, either default or caller-provided
             # is not a dict and should represent a path to the data
             quote_data = json.load(open(quote_data_src))
@@ -41,6 +40,13 @@ class MQRandomizer:
         self._quotes: list[MQuote] = []
         quote_dicts = quote_data["quotes"]
         self._quotes = self._populate_quotes(quote_dicts)
+
+    def _default_quote_data(self):
+        # for easier monkeypatching during tests
+        quote_data_src = data_location_as_path(
+            data, data.DEFAULT_QUOTES_JSON)
+        quote_data = json.load(open(quote_data_src))
+        return quote_data
 
     def _populate_quotes(self, quote_dicts: list[dict[str, Any]]) -> list[MQuote]:
         quotes = []
