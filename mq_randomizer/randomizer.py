@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from . import data
+from .json_validation import validate_quotes_json
 from .pkg_resources import data_location_as_path
 from .quote_types import MQuote
 
@@ -33,6 +34,9 @@ class MQRandomizer:
             # quote_data_src is a dict, and doesn't need to be
             # loaded from disk via json
             quote_data = quote_data_src
+
+        validate_quotes_json(quote_data)
+
         self._media_title = quote_data["meta"]["media_title"]
         self._media_type = quote_data["meta"]["media_type"]
         self._year = quote_data["meta"]["year"]
