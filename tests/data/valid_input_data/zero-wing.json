@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "version": 1,
+    "media_title": "Zero Wing",
+    "media_type": "Video Game",
+    "year": 1989,
+    "description": "Quotes from the video game Zero Wing, noted for poorly translated subtitles that spawned an internet meme."
+  },
+  "quotes": [
+    {
+      "quote_type": "dialogue",
+      "characters": [
+        "__none__"
+      ],
+      "lines": [
+        { "__none__": "In A.D. 2101" },
+        { "__none__": "War was beginning."}
+      ]
+    },
+    {
+      "quote_type": "dialogue",
+      "characters": [
+        "Captain",
+        "Mechanic"
+      ],
+      "lines": [
+        { "Captain": "What happen?" },
+        { "Mechanic": "Somebody set up us the bomb."}
+      ]
+    },
+    {
+      "quote_type": "dialogue",
+      "characters": [
+        "Operator",
+        "Captain"
+      ],
+      "lines": [
+        { "Operator": "We get signal." },
+        { "Mechanic": "What!"}
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Operator"
+      ],
+      "lines": [
+        { "Operator": "Main screen turn on." }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Captain"
+      ],
+      "lines": [
+        { "Captain": "It's you!!" }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "CATS"
+      ],
+      "lines": [
+        { "CATS": "How are you gentlemen!!" }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "CATS"
+      ],
+      "lines": [
+        { "CATS": "How are you gentlemen!!" }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "CATS"
+      ],
+      "lines": [
+        { "CATS": "All your base are belong to us." }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "CATS"
+      ],
+      "lines": [
+        { "CATS": "You are on the way to destruction." }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Captain"
+      ],
+      "lines": [
+        { "Captain": "What you say !!" }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "CATS"
+      ],
+      "lines": [
+        { "CATS": "You have no chance to survive make your time." }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "CATS"
+      ],
+      "lines": [
+        { "CATS": "Ha ha ha ha ...." }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Operator"
+      ],
+      "lines": [
+        { "Operator": "Captain !!" }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Captain"
+      ],
+      "lines": [
+        { "Captain": "Take off every 'ZIG'!!" }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Captain"
+      ],
+      "lines": [
+        { "Captain": "You know what you doing." }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Captain"
+      ],
+      "lines": [
+        { "Captain": "Move 'ZIG'." }
+      ]
+    },
+    {
+      "quote_type": "single",
+      "characters": [
+        "Captain"
+      ],
+      "lines": [
+        { "Captain": "For great justice." }
+      ]
+    }
+  ]
+}
