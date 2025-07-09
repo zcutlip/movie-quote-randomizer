@@ -35,7 +35,10 @@ class MQRandomizer:
             # loaded from disk via json
             quote_data = quote_data_src
 
-        validate_quotes_json(quote_data)
+        # if validation is enabled and is successful, this returns True
+        # if validation is disabled, this returns False
+        # and exception is raised if validation fails
+        self._validated = validate_quotes_json(quote_data)
 
         self._media_title = quote_data["meta"]["media_title"]
         self._media_type = quote_data["meta"]["media_type"]
