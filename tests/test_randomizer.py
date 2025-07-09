@@ -13,6 +13,7 @@ class TestMQRandomizer:
     def mock_data(self):
         return {
             "meta": {
+                "version": 1,
                 "media_title": "Test Movie",
                 "media_type": "movie",
                 "year": 2023,
@@ -20,10 +21,12 @@ class TestMQRandomizer:
             },
             "quotes": [
                 {
+                    "quote_type": "single",
                     "characters": ["Character1"],
                     "lines": [{"Character1": "Line 1"}]
                 },
                 {
+                    "quote_type": "single",
                     "characters": ["Character2"],
                     "lines": [{"Character2": "Line 2"}]
                 }
