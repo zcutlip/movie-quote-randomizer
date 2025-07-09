@@ -9,6 +9,7 @@ from mq_randomizer.randomizer import MQRandomizer
 
 
 class TestMQRandomizer:
+
     @pytest.fixture
     def mock_data(self):
         return {
@@ -83,14 +84,14 @@ class TestMQRandomizer:
         assert len(randomizer_default_data._quotes) > 0
 
     def test_quote_at_index_010(self, randomizer_default_data):
+        assert len(randomizer_default_data._quotes) > 0
         quote = randomizer_default_data.quote_at_index(0)
         assert isinstance(quote, MQuote)
-        assert len(randomizer_default_data._quotes) > 0
 
     def test_quote_at_index_020(self, randomizer_default_data):
+        assert len(randomizer_default_data._quotes) > 0
         quote = randomizer_default_data.quote_at_index(1)
         assert isinstance(quote, MQuote)
-        assert len(randomizer_default_data._quotes) > 0
 
     def test_quote_at_index_030(self, randomizer_default_data):
         assert len(randomizer_default_data._quotes) > 0
